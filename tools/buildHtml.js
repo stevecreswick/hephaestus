@@ -1,9 +1,10 @@
 var fs = require( 'fs' );
 var cheerio = require( 'cheerio' );
 var colors = require( 'colors' );
+var htmlSource = path.join( appRoot, 'src', 'index.html' );
 
 module.exports = function buildHtml() {
-  fs.readFile('src/index.html', 'utf8', (err, markup) => {
+  fs.readFile( htmlSource, 'utf8', (err, markup) => {
     if (err) {
       return console.log(err);
     }

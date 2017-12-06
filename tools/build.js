@@ -1,3 +1,5 @@
+
+console.log( 'HEPHAESTUS is BUILDING' );
 /*eslint-disable no-console */
 var webpack = require( 'webpack' );
 var webpackConfig = require( '../webpack.config.prod' );

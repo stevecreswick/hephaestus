@@ -8,16 +8,18 @@ const extractSass = new ExtractTextPlugin({
     disable: process.env.NODE_ENV === "development"
 });
 
+var appSource = path.join( appRoot, 'src', 'js', 'app' );
+
 
 module.exports = {
   devtool: 'source-map',
 
   entry: [
-    './src/js/app'
+    appSource
   ],
 
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join( appRoot, 'public'),
     filename: 'bundle.js'
   },
 
