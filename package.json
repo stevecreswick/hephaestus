@@ -22,7 +22,9 @@
     "rimraf-standalone": "^2.6.1-5",
     "webpack": "^3.9.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "app-root-path": "^2.0.1"
+  },
   "author": "",
   "license": "ISC"
 }

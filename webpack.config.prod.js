@@ -1,6 +1,6 @@
 // webpack.config.prod.js
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 const loaders = require( './webpack.config.loaders' );
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractSass = new ExtractTextPlugin({
@@ -8,6 +8,7 @@ const extractSass = new ExtractTextPlugin({
     disable: process.env.NODE_ENV === "development"
 });
 
+const appRoot = process.cwd();
 var appSource = path.join( appRoot, 'src', 'js', 'app' );
 
 

@@ -2,6 +2,7 @@ var fs = require( 'fs' );
 var cheerio = require( 'cheerio' );
 var colors = require( 'colors' );
 var path = require( 'path' );
+const appRoot = process.cwd();
 var htmlSource = path.join( appRoot, 'src', 'index.html' );
 
 module.exports = function buildHtml() {

@@ -1,5 +1,4 @@
 var path = require('path');
-global.appRoot = path.resolve( __dirname );
 
 var buildHtml = require( './tools/buildHtml' );
 var build = require( './tools/build' );
