@@ -4,6 +4,7 @@ var colors = require( 'colors' );
 var path = require( 'path' );
 const appRoot = process.cwd();
 var htmlSource = path.join( appRoot, 'src', 'index.html' );
+var publicHtml = path.join( appRoot, 'public', 'index.html' );
 
 module.exports = function buildHtml() {
   fs.readFile( htmlSource, 'utf8', (err, markup) => {
@@ -17,7 +18,8 @@ module.exports = function buildHtml() {
     $('head').prepend('');
     $('body').append( '<script src="' + bundleSrc + '"></script>' );
 
-    fs.writeFile('public/index.html', $.html(), 'utf8', function (err) {
+
+    fs.writeFile( publicHtml, $.html(), 'utf8', function (err) {
       if (err) {
         return console.log(err);
       }
