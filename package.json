@@ -5,16 +5,21 @@
   "main": "index.js",
   "scripts": {
     "build": "babel-node tools/build.js",
-    "clean-public": "npm run remove-public && mkdir public",
+    "clean-public": "npm run remove-public && mkdirp public",
     "remove-public": "node_modules/.bin/rimraf ./public",
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm-run-all clean-public build:html"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "cheerio": "^1.0.0-rc.2",
     "colors": "^1.1.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "fs": "0.0.1-security",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "rimraf-standalone": "^2.6.1-5",
     "webpack": "^3.9.1"
   },
   "dependencies": {},
