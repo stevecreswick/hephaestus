@@ -12,12 +12,12 @@ module.exports = function buildHtml() {
       return console.log(err);
     }
 
-    var $ = cheerio.load(markup);
+    console.log( 'MARKUP ', markup );
+    var $ = cheerio.load( markup );
     var bundleSrc = '/bundle.js';
 
     $('head').prepend('');
     $('body').append( '<script src="' + bundleSrc + '"></script>' );
-
 
     fs.writeFile( publicHtml, $.html(), 'utf8', function (err) {
       if (err) {
