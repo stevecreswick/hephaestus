@@ -2,11 +2,11 @@
 var webpack = require( 'webpack' );
 var webpackConfig = require( '../webpack.config.prod' );
 var colors = require( 'colors' );
+const processLogger = require( './processLogger' );
 
 module.exports = function buildApp() {
   process.env.NODE_ENV = 'production';
-
-  console.log('Generating minified bundle for production via Webpack...'.blue);
+  processLogger( 'Starting Process: generating minified bundle for production', 'info' );
 
   webpack(webpackConfig).run((err, stats) => {
     if (err) { // so a fatal error occurred. Stop here.
@@ -21,12 +21,12 @@ module.exports = function buildApp() {
     }
 
     if (jsonStats.hasWarnings) {
-      console.log('Webpack generated the following warnings: '.bold.yellow);
-      jsonStats.warnings.map(warning => console.log(warning.yellow));
+      processLogger( 'Webpack generated the following warnings: ', 'error' );
+      jsonStats.warnings.map( warning => processLogger( warning, 'warn' ) );
     }
 
-    console.log(`Webpack stats: ${stats}`);
-    console.log('Your app has been compiled in production mode and written to /public.'.green);
+    processLogger( `Webpack stats: ${stats}` );
+    processLogger( 'Your app has been compiled in production mode and written to Public.', 'success' );
 
     return 0;
   });

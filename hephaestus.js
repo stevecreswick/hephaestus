@@ -1,17 +1,15 @@
-var path = require('path');
+const path = require('path');
 
-var buildHtml = require( './tools/buildHtml' );
-var build = require( './tools/build' );
-var clean = require( './tools/clean' );
-const directory = 'public';
+const build = require( './tools/build' );
+const buildHtml = require( './tools/buildHtml' );
+const clean = require( './tools/clean' );
+
+const publicDirectory = 'public';
 
 const hephaestus = {
   build: function() {
-    console.log('H: Cleaning Public Folder');
-    clean( directory );
-    console.log('H: Running Build');
+    clean( publicDirectory );
     build();
-    console.log('H: Running Build HTML');
     buildHtml();
   }
 }
