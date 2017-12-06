@@ -2,7 +2,7 @@
   "name": "hephaestus",
   "version": "1.0.0",
   "description": "Build tool for webpack.",
-  "main": "index.js",
+  "main": "hephaestus.js",
   "scripts": {
     "build": "babel-node tools/build.js",
     "clean-public": "npm run remove-public && mkdirp public",
@@ -23,7 +23,8 @@
     "webpack": "^3.9.1"
   },
   "dependencies": {
-    "app-root-path": "^2.0.1"
+    "app-root-path": "^2.0.1",
+    "fs-extra": "^4.0.3"
   },
   "author": "",
   "license": "ISC"

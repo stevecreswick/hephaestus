@@ -23,5 +23,5 @@ module.exports = function buildHtml() {
       }
       console.log('index.html written to /public'.green);
     });
-  });
+  } );
 }
