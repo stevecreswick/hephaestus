@@ -2,8 +2,7 @@
 const fs = require( 'fs' );
 const cheerio = require( 'cheerio' );
 const path = require( 'path' );
-const colors = require( 'colors' );
-const processLogger = require( './processLogger' );
+const processLogger = require( './../utils/processLogger' );
 
 // -------------------------------------------------------
 // Paths
@@ -27,8 +26,8 @@ const createDirectory = function( directory ) {
 };
 
 const appendJavascript = function( markup ) {
-  processLogger( 'Starting Process: appending Javascript to HTML', 'info' );
-  console.log( ' markup ', markup );
+  processLogger( 'Appending Javascript to HTML', 'info' );
+
   if ( markup ) {
     const $ = cheerio.load( markup );
     const bundleSrc = '/bundle.js';
@@ -36,35 +35,38 @@ const appendJavascript = function( markup ) {
     $( 'head' ).prepend( '' );
     $( 'body' ).append( '<script src="' + bundleSrc + '"></script>' );
 
-    processLogger( 'Finished Process: Javascript Appended to HTML', 'success' );
+    processLogger( 'Javascript Appended to HTML', 'success' );
     return $;
   }
 };
 
 const writeIndex = function( fileLocation, indexFile ) {
-  processLogger( 'Starting Process: writing HTML to public', 'info' );
+  processLogger( 'Writing HTML to public', 'info' );
   if ( !indexFile ) {
-    processLogger( 'Error: build template not found.', 'error' );
+    processLogger( 'Error: Build template not found.', 'error' );
     return;
   }
 
-  fs.writeFile( publicHtml, indexFile.html(), 'utf8', function (err) {
-    if  (err ) {
-      processLogger( err, 'error' );
+  fs.writeFile( publicHtml, indexFile.html(), 'utf8', function ( error ) {
+    if  ( error ) {
+      processLogger( error, 'error' );
     }
 
-    processLogger( 'Finished Process: index.html written to Public Folder', 'success' );
+    processLogger( 'HTML written to Public Folder', 'success' );
   } );
 };
 
+// -------------------------------------------------------
 // Exports
-module.exports = function buildHtml() {
-  fs.readFile( buildTemplate, 'utf8', (err, markup) => {
-    if (err) {
-      processLogger( err, 'error' );
+const buildHtml = function() {
+  fs.readFile( buildTemplate, 'utf8', ( error, markup ) => {
+    if ( error ) {
+      processLogger( error, 'error' );
     }
 
     createDirectory( publicPath );
     writeIndex( publicHtml, appendJavascript( markup ) );
   } );
-}
+};
+
+module.exports = buildHtml;

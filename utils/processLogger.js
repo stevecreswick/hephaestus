@@ -2,11 +2,11 @@ const colors = require( 'colors' );
 const appName = 'Hephaestus';
 
 colors.setTheme( {
-  appTheme: [ 'cyan', 'bold', 'italic' ],
+  appTheme: [ 'red', 'bold', 'underline', 'dim' ],
   success: 'rainbow',
   input: 'grey',
   verbose: 'cyan',
-  prompt: 'grey',
+  prompt: [ 'yellow', 'bold', 'dim' ],
   info: [ 'blue', 'italic' ],
   data: 'grey',
   help: 'cyan',
@@ -16,10 +16,12 @@ colors.setTheme( {
 } );
 
 module.exports = function( message, theme ) {
+  const seperator = '::>';
+
   if ( theme ) {
-    return console.log( appName[ 'appTheme' ], message[ theme ] )
+    return console.log( appName[ 'appTheme' ], seperator[ 'prompt' ], message[ theme ] )
   }
   else {
-    return console.log( appName[ 'appTheme' ], message )
+    return console.log( appName[ 'appTheme' ], seperator[ 'prompt' ], message )
   }
 };

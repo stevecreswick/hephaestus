@@ -1,17 +1,17 @@
-const path = require('path');
-
-const build = require( './tools/build' );
-const buildHtml = require( './tools/buildHtml' );
-const clean = require( './tools/clean' );
+const buildEnv = require( './tasks/buildEnvironment' );
+const buildJS = require( './tasks/buildJS' );
+const buildHtml = require( './tasks/buildHtml' );
+const clean = require( './tasks/clean' );
 
 const publicDirectory = 'public';
 
 const hephaestus = {
-  build: function() {
+  build: function( environment ) {
+    buildEnv( environment );
     clean( publicDirectory );
-    build();
+    buildJS();
     buildHtml();
   }
-}
+};
 
 module.exports = hephaestus;
