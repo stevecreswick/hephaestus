@@ -22,7 +22,8 @@ module.exports = function buildJS() {
       jsonStats.warnings.map( warning => processLogger( 'BUILD JS: ' + warning, 'warn' ) );
     }
 
-    processLogger( `Build JS: Webpack stats: ${stats}` );
+    processLogger( 'Build JS: Webpack stats:', 'info' );
+    processLogger( `${stats}`, 'data' )
     processLogger( 'Build JS: JS bundle written to Public.', 'success' );
 
     return 0;

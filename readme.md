@@ -10,6 +10,14 @@ process for React/Webpack-Based front-end projects.
 `npm install hephaestus-webpack`
 
 ### Production Usage
+#### Local devDependencies
+```
+- style-loader
+- file-loader
+- sass-loaded
+- node-sass
+```
+
 #### Expected File Structure
 ```
 root
@@ -22,7 +30,8 @@ root
     - js
       application.js
 ```
-#### Initialize in server.js
+
+#### Initialization
 ```
 var hephaestus = require( 'hephaestus-webpack' );
 hephaestus.build( 'production' );
