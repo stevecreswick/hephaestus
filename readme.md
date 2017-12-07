@@ -1,4 +1,4 @@
-# Hephaestus
+# Hephaestus for Webpack
 
 ## Description
 Hephaestus is a build tool for Webpack to hopefully speed up my personal development
@@ -18,7 +18,9 @@ root
     index.html
     - assets
     - css
+      application.scss
     - js
+      application.js
 ```
 #### Initialize in server.js
 ```
