@@ -8,7 +8,7 @@ const extractSass = new ExtractTextPlugin({
 });
 
 const appRoot = process.cwd();
-var appSource = path.join( appRoot, 'src', 'js', 'app' );
+var appSource = path.join( appRoot, 'src', 'js', 'application' );
 
 module.exports = {
   devtool: 'source-map',
@@ -32,7 +32,8 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
+        'NODE_ENV': JSON.stringify( 'production' ),
+        'TEST_VAR': 'Does this work...'
       }
     })
   ],

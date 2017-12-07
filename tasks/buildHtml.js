@@ -60,13 +60,13 @@ const writeIndex = function( fileLocation, indexFile ) {
 // -------------------------------------------------------
 // Exports
 const buildHtml = function() {
-  fs.readFile( buildTemplate, 'utf8', ( error, markup ) => {
+  fs.readFile( buildTemplate, 'utf8', ( error, template ) => {
     if ( error ) {
       processLogger( 'BUILD HTML Error: Cannot Find Build Template.', 'error' );
     }
 
     createDirectory( publicPath );
-    writeIndex( publicHtml, appendJavascript( markup ) );
+    writeIndex( publicHtml, appendJavascript( template ) );
   } );
 };
 
