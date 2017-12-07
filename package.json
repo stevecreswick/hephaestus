@@ -1,5 +1,5 @@
 {
-  "name": "hephaestus",
+  "name": "hephaestus-webpack",
   "version": "1.0.0",
   "description": "Build tool for webpack.",
   "main": "hephaestus.js",
