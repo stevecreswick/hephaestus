@@ -1,6 +1,6 @@
 {
   "name": "hephaestus-webpack",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Build tool for webpack.",
   "main": "hephaestus.js",
   "repository": {
