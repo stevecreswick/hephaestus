@@ -21,12 +21,12 @@ const publicHtml = path.join( publicPath, 'index.html' );
 // Functions
 const createDirectory = function( directory ) {
   if ( !fs.existsSync( directory ) ) {
-    fs.mkdirSync(directory);
+    fs.mkdirSync( directory );
   }
 };
 
 const appendJavascript = function( markup ) {
-  processLogger( 'Appending Javascript to HTML', 'info' );
+  processLogger( 'Build HTML: Appending Javascript to HTML', 'info' );
 
   if ( markup ) {
     const $ = cheerio.load( markup );
@@ -35,24 +35,25 @@ const appendJavascript = function( markup ) {
     $( 'head' ).prepend( '' );
     $( 'body' ).append( '<script src="' + bundleSrc + '"></script>' );
 
-    processLogger( 'Javascript Appended to HTML', 'success' );
+    processLogger( 'Build HTML: Javascript Appended to HTML', 'success' );
     return $;
   }
 };
 
 const writeIndex = function( fileLocation, indexFile ) {
-  processLogger( 'Writing HTML to public', 'info' );
+  processLogger( 'Build HTML: Writing HTML to public', 'info' );
+
   if ( !indexFile ) {
-    processLogger( 'Error: Build template not found.', 'error' );
+    processLogger( 'Build HTML Error: Cannot write index.html. Template not found.', 'error' );
     return;
   }
 
   fs.writeFile( publicHtml, indexFile.html(), 'utf8', function ( error ) {
-    if  ( error ) {
+    if ( error ) {
       processLogger( error, 'error' );
     }
 
-    processLogger( 'HTML written to Public Folder', 'success' );
+    processLogger( 'Build HTML: HTML written to Public Folder', 'success' );
   } );
 };
 
@@ -61,7 +62,7 @@ const writeIndex = function( fileLocation, indexFile ) {
 const buildHtml = function() {
   fs.readFile( buildTemplate, 'utf8', ( error, markup ) => {
     if ( error ) {
-      processLogger( error, 'error' );
+      processLogger( 'BUILD HTML Error: Cannot Find Build Template.', 'error' );
     }
 
     createDirectory( publicPath );

@@ -14,4 +14,6 @@ const hephaestus = {
   }
 };
 
+hephaestus.build( 'production' );
+
 module.exports = hephaestus;

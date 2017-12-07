@@ -1,8 +1,11 @@
 const fs = require('fs-extra');
 const path = require('path');
 const appRoot = process.cwd();
+const processLogger = require( './../utils/processLogger' );
 
 const removeDirectory = function( directoryPath ) {
+  processLogger( 'Clean: Wiping Public Folder.', 'info' );
+
   try { var files = fs.readdirSync( directoryPath ); }
   catch( e ) { return; }
   if ( files.length > 0 ) {
@@ -15,6 +18,7 @@ const removeDirectory = function( directoryPath ) {
     }
 
     fs.rmdirSync( directoryPath );
+    processLogger( 'Clean: Removed Public Folder.', 'success' );
   }
 };
 

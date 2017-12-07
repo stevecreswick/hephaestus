@@ -3,7 +3,7 @@ const appName = 'Hephaestus';
 
 colors.setTheme( {
   appTheme: [ 'red', 'bold', 'underline', 'dim' ],
-  success: 'rainbow',
+  success: [ 'green', 'bold' ],
   input: 'grey',
   verbose: 'cyan',
   prompt: [ 'yellow', 'bold', 'dim' ],
@@ -12,13 +12,17 @@ colors.setTheme( {
   help: 'cyan',
   warn: 'yellow',
   debug: 'blue',
-  error: [ 'red', 'underline', 'bold' ]
+  error: [ 'red', 'bold' ]
 } );
 
 module.exports = function( message, theme ) {
   const seperator = '::>';
+  const errorText = 'ERROR';
 
-  if ( theme ) {
+  if ( theme === 'error' ) {
+    return console.log( errorText[ 'appTheme' ], seperator[ 'prompt' ], message[ theme ] )
+  }
+  else if ( theme ) {
     return console.log( appName[ 'appTheme' ], seperator[ 'prompt' ], message[ theme ] )
   }
   else {
